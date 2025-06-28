@@ -20,8 +20,8 @@ function analyzeMood() {
   resultDiv.appendChild(typingDiv);
   resultDiv.scrollTop = resultDiv.scrollHeight;
 
-  // Send to backend
-  fetch("http://localhost:5000/analyze", {
+  // ✅ Send to backend (corrected line)
+  fetch("https://mindguard-g5j4.onrender.com/analyze", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -56,14 +56,15 @@ function analyzeMood() {
       resultDiv.innerHTML += `
         <div class="chat bot">❌ Error: ${err.message}</div>
       `;
+      document.getElementById("userInput").value = "";
     });
 }
 
-// Load chat history on page load
+// ✅ Load chat history on page load
 window.onload = () => {
   const resultDiv = document.getElementById("result");
 
-  fetch("http://localhost:5000/history")
+  fetch("https://mindguard-g5j4.onrender.com/history")
     .then((res) => res.json())
     .then((chats) => {
       chats.reverse().forEach((chat) => {
@@ -75,7 +76,7 @@ window.onload = () => {
       resultDiv.scrollTop = resultDiv.scrollHeight;
     });
 
-  // Handle dark mode preference
+  // ✅ Handle dark mode
   const toggle = document.getElementById("darkModeToggle");
   if (localStorage.getItem("darkMode") === "enabled") {
     document.body.classList.add("dark");
