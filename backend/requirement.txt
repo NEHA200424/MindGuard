@@ -1,8 +1,0 @@
-Flask
-flask_cors
-joblib
-scikit-learn
-pandas
-datasets
-openai
-sqlite3
